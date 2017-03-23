@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :products, :only => [:index, :show, :edit, :update] do
-      member do
-        put :toggle_admin_approved
+  namespace :host do
+    namespace :admin do
+      resources :products, :only => [:index, :edit, :update] do
+        member do
+          put :toggle_admin_approved
+        end
       end
     end
 

@@ -1,0 +1,28 @@
+<h1>Listing products</h1>
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>  <%= t('product.name') %> </th>
+      <th>  <%= t('product.sku_id') %> </th>
+      <th>  <%= t('product.description') %> </th>
+      <th>  <%= t('product.price') %> </th>
+      <th>  <%= t('product.images') %> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to(value_or_not_set(product.name), edit_host_admin_product_path(product)) %></td>
+        <td><%= link_to(product.sku_id, edit_host_admin_product_path(product)) %></td>
+        <td><%= value_or_not_set(product.description) %></td>
+        <td><%= value_or_not_set(product.price) %></td>
+        <td><%= image_tag(product.first_image_url, :alt => t('common.not_set')) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

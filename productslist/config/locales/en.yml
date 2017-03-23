@@ -20,4 +20,27 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    not_set:
+      'Not set'
+    back:
+      'Back'
+  product:
+    sku_id:
+      'Sku id'
+    name:
+      'Name'
+    expire_date:
+      'Expire date'
+    categories:
+      'Categories'
+    tags:
+      'Tags'
+    images:
+      'Image'
+    price:
+      'Price'
+    description:
+      'Description'
+    admin_approved:
+      'Approved by admin'

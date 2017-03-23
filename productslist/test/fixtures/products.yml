@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sku_id: MyString
-  name: MyString
-  expire_date: 2017-03-23
-  categories: MyText
-  tags: MyText
-  images: MyText
-  price: 
-  description: MyText
+  sku_id: sku_id1
+  name:
+  expire_date:
+  categories:
+  tags:
+  images:
+  price:
+  description:
 
 two:
-  sku_id: MyString
-  name: MyString
-  expire_date: 2017-03-23
-  categories: MyText
-  tags: MyText
-  images: MyText
-  price: 
-  description: MyText
+  sku_id: sku_id2
+  name:
+  expire_date:
+  categories:
+  tags:
+  images:
+  price:
+  description:
