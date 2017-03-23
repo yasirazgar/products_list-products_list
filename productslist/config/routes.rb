@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :products, :only => [:index, :show, :edit, :update] do
+      member do
+        put :toggle_admin_approved
+      end
+    end
+
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
