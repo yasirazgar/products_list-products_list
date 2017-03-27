@@ -5,13 +5,19 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
+  host: localhost
+  # username: user # heroku config
   pool: 5
   timeout: 5000
+  # username: root
+  # password:
+  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: products_list_dev
+  # database: app-dev # heroku config
+  database: products_list_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

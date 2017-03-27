@@ -13,11 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20170323044955) do
 
-  create_table "categories", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "sku_id",                         null: false
     t.string   "name"
     t.date     "expire_date"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170323044955) do
     t.datetime "updated_at"
   end
 
-  create_table "products_categories", force: true do |t|
+  create_table "products_categories", force: :cascade do |t|
     t.integer "product_id"
     t.integer "category_id"
   end
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170323044955) do
   add_index "products_categories", ["category_id"], name: "index_products_categories_on_category_id", using: :btree
   add_index "products_categories", ["product_id"], name: "index_products_categories_on_product_id", using: :btree
 
-  create_table "products_tags", force: true do |t|
+  create_table "products_tags", force: :cascade do |t|
     t.integer "product_id"
     t.integer "tag_id"
   end
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170323044955) do
   add_index "products_tags", ["product_id"], name: "index_products_tags_on_product_id", using: :btree
   add_index "products_tags", ["tag_id"], name: "index_products_tags_on_tag_id", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
   end
 

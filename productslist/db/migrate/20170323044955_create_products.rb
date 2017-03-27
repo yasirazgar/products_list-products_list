@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.date :expire_date
       t.text :images
-      t.column :price, 'int(11) unsigned', :default => 0
+      t.column :price, 'int', :default => 0
       t.text :description
       t.boolean :admin_approved, :default => false
 
