@@ -23,14 +23,32 @@
     <%= f.label :expire_date %><br>
     <%= f.date_select :expire_date %>
   </div>
-  <div class="field">
+  <div class="field category">
     <%= f.label :categories %><br>
-    <%= f.text_area :categories %>
+    <div class="rows">
+      <% @product.categories.each do |category| %>
+        <%= render('host/admin/products/row', :name => category.name, :id => category.id, :type => 'category')  %>
+      <% end -%>
+    </div>
+    <div class="add_new category">
+      <%= text_field_tag('product[categories][]', '') %>
+      <%= button_tag(t('common.add'), :class => 'add') %>
+    </div>
   </div>
-  <div class="field">
+
+  <div class="field tag">
     <%= f.label :tags %><br>
-    <%= f.text_area :tags %>
+    <div class="rows">
+      <% @product.tags.each do |tag| %>
+        <%= render('host/admin/products/row', :name => tag.name, :id => tag.id, :type => 'tag')  %>
+      <% end -%>
+    </div>
+    <div class="add_new tag">
+      <%= text_field_tag('product[tags][]', '') %>
+      <%= button_tag(t('common.add'), :class => 'add') %>
+    </div>
   </div>
+
   <div class="field">
     <%= f.label :images %><br>
     <%= image_tag(@product.first_image_url, :alt => t('common.not_set')) %>
@@ -44,10 +62,90 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :admin_approved %>
     <%= f.check_box :admin_approved %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var urls = {
+      add_tag: '<%= add_tag_host_admin_product_path(@product)  %>',
+      remove_tag: '<%= remove_tag_host_admin_product_path(@product) %>',
+      add_category: '<%= add_category_host_admin_product_path(@product)  %>',
+      remove_category: '<%= remove_category_host_admin_product_path(@product)  %>',
+    }
+
+    $(document).on('click', '.remove', function(event){
+      var row = $(this).parents('.row'),
+          id = row.data('id'),
+          url;
+      if (!row.hasClass('new_row')){
+        if (row.hasClass('tag')){
+          url = urls.remove_tag
+        }
+        else if (row.hasClass('category')){
+          url = urls.remove_category
+        }
+
+        submitRemoveRow(url, id, $(this));
+      }
+      row.remove;
+      return false;
+    })
+
+
+    function submitRemoveRow(url, id, button){
+      $.ajax({
+        url: url,
+        data: {context_id: id},
+        type: 'delete',
+        success: function(response){
+          alert("Removed successfully")
+        },
+        error: function(){
+          alert("Error")
+        },
+      })
+    }
+
+    $(document).on('click', '.add', function(event){
+      var row = $(this).parents('.add_new'),
+          name = row.find('input').val(),
+          url;
+      if(name == '' || name == 'undefined'){
+        alert("Name cannot be blank");
+        return;
+      }
+      if (row.hasClass('tag')){
+        url = urls.add_tag;
+      }
+      else if (row.hasClass('category')){
+        url = urls.add_category;
+      }
+
+      submitAddRow(url, name, $(this));
+      return false;
+    })
+
+    function submitAddRow(url, name, button){
+      $.ajax({
+        url: url,
+        data: {name: name},
+        type: 'post',
+        success: function(response){
+          button.parents('.field').find('.rows').append(response.html);
+          alert("Added successfully")
+        },
+        error: function(){
+          alert("Error")
+        },
+      })
+    }
+
+
+  })
+</script>

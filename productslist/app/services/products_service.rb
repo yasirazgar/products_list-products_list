@@ -14,6 +14,14 @@ class ProductsService
     product
   end
 
+  def find_or_create_tag_or_product(tag_or_product, name)
+    unless (context = tag_or_product.find_by(:name => name))
+      context = tag_or_product.create(:name => name)
+    end
+
+    context
+  end
+
   private
 
   def add_categories_to_product(category_names, product)

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       resources :products, :only => [:index, :edit, :update] do
         member do
           put :toggle_admin_approved
+          post :add_tag
+          delete :remove_tag
+          post :add_category
+          delete :remove_category
         end
       end
     end

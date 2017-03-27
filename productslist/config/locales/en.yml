@@ -25,6 +25,14 @@ en:
       'Not set'
     back:
       'Back'
+    remove:
+      'Remove'
+    add:
+      'Add'
+    already_exists:
+      'Already exists'
+    removed_success:
+      'Removed success'
   product:
     sku_id:
       'Sku id'
@@ -44,3 +52,7 @@ en:
       'Description'
     admin_approved:
       'Approved by admin'
+    category_added:
+      'Category added successfully'
+    tag_added:
+      'Tag added successfully'
