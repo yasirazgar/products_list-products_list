@@ -4,7 +4,7 @@ class ProductTest < ActiveSupport::TestCase
   test "first_image_url" do
     image_url = 'folder/image1'
 
-    assert_equal(
+    assert_equal(image_url,
       Product.new(
         :images => [
           {:image_path => image_url},
