@@ -19,5 +19,8 @@ module Productslist
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Custom directories with classes and modules, that needs to be autoloadable in development mode.
+    config.autoload_paths += %W(#{config.root}/app/services/**/)
   end
 end
