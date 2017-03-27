@@ -79,6 +79,12 @@
       remove_category: '<%= remove_category_host_admin_product_path(@product)  %>',
     }
 
+    var strings = {
+      removed_successfully: '<%= t('common.removed_successfully') %>',
+      blank_name: '<%= t('product.errors.blank_name') %>',
+      error: '<%= t('common.error') %>'
+    }
+
     $(document).on('click', '.remove', function(event){
       var row = $(this).parents('.row'),
           id = row.data('id'),
@@ -104,10 +110,10 @@
         data: {context_id: id},
         type: 'delete',
         success: function(response){
-          alert("Removed successfully")
+          alert(strings.removed_successfully)
         },
         error: function(){
-          alert("Error")
+          alert(strings.error)
         },
       })
     }
@@ -117,7 +123,7 @@
           name = row.find('input').val(),
           url;
       if(name == '' || name == 'undefined'){
-        alert("Name cannot be blank");
+        alert(strings.blank_name);
         return;
       }
       if (row.hasClass('tag')){
@@ -138,10 +144,10 @@
         type: 'post',
         success: function(response){
           button.parents('.field').find('.rows').append(response.html);
-          alert("Added successfully")
+          alert(response.message)
         },
         error: function(){
-          alert("Error")
+          alert(strings.error)
         },
       })
     }

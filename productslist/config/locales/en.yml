@@ -31,8 +31,10 @@ en:
       'Add'
     already_exists:
       'Already exists'
-    removed_success:
-      'Removed success'
+    removed_successfully:
+      'Removed successfully'
+    error:
+      'Error'
   product:
     sku_id:
       'Sku id'
@@ -56,3 +58,6 @@ en:
       'Category added successfully'
     tag_added:
       'Tag added successfully'
+    errors:
+      blank_name:
+        'Name cannot be blank'

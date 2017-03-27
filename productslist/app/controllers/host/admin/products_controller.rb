@@ -78,7 +78,7 @@ class Host::Admin::ProductsController < ApplicationController
 
   def render_remove_success_json
     render(:json => {
-      :message => t('common.removed_success'),
+      :message => t('common.removed_successfully'),
     })
   end
 

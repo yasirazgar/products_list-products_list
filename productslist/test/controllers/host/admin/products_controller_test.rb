@@ -62,7 +62,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_equal(tag, @product.tags.first)
     xhr(:delete, :remove_tag, :id => @product, :context_id => tag.id)
     assert_response(:success)
-    assert_equal(I18n.t('common.removed_success'), JSON.parse(@response.body)['message'],
+    assert_equal(I18n.t('common.removed_successfully'), JSON.parse(@response.body)['message'],
       "Should send back message")
     assert_equal(true, @product.tags.blank?)
   end
@@ -72,7 +72,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_equal(category, @product.categories.first)
     xhr(:delete, :remove_category, :id => @product, :context_id => category.id)
     assert_response(:success)
-    assert_equal(I18n.t('common.removed_success'), JSON.parse(@response.body)['message'])
+    assert_equal(I18n.t('common.removed_successfully'), JSON.parse(@response.body)['message'])
     assert_equal(true, @product.categories.blank?)
   end
 
