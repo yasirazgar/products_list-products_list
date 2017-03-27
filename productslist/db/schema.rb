@@ -13,18 +13,40 @@
 
 ActiveRecord::Schema.define(version: 20170323044955) do
 
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
+
   create_table "products", force: true do |t|
     t.string   "sku_id",                         null: false
     t.string   "name"
     t.date     "expire_date"
-    t.text     "categories"
-    t.text     "tags"
     t.text     "images"
     t.integer  "price",          default: 0
     t.text     "description"
     t.boolean  "admin_approved", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "products_categories", force: true do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+  end
+
+  add_index "products_categories", ["category_id"], name: "index_products_categories_on_category_id", using: :btree
+  add_index "products_categories", ["product_id"], name: "index_products_categories_on_product_id", using: :btree
+
+  create_table "products_tags", force: true do |t|
+    t.integer "product_id"
+    t.integer "tag_id"
+  end
+
+  add_index "products_tags", ["product_id"], name: "index_products_tags_on_product_id", using: :btree
+  add_index "products_tags", ["tag_id"], name: "index_products_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
   end
 
 end

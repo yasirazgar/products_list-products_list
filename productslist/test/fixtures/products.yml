@@ -4,8 +4,8 @@ one:
   sku_id: sku_id1
   name:
   expire_date:
-  categories:
-  tags:
+  categories: one
+  tags: one
   images:
   price:
   description:
@@ -14,8 +14,8 @@ two:
   sku_id: sku_id2
   name:
   expire_date:
-  categories:
-  tags:
+  categories: two
+  tags: two
   images:
   price:
   description:
