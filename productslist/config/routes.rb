@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root :to => 'host/admin/products#index'
+
   namespace :host do
     namespace :admin do
       resources :products, :only => [:index, :edit, :update] do
