@@ -52,7 +52,7 @@ class Host::Admin::ProductsController < ApplicationController
 
     @product.categories.where(:id => category_id).first.destroy
 
-    render_remove_success_json
+    render_remove_success_json(t('product.category_removed'))
   end
 
   # only xhr
@@ -61,7 +61,7 @@ class Host::Admin::ProductsController < ApplicationController
 
     @product.tags.where(:id => tag_id).first.destroy
 
-    render_remove_success_json
+    render_remove_success_json(t('product.tag_removed'))
   end
 
   private
@@ -76,9 +76,9 @@ class Host::Admin::ProductsController < ApplicationController
     )
   end
 
-  def render_remove_success_json
+  def render_remove_success_json(message)
     render(:json => {
-      :message => t('common.removed_successfully'),
+      :message => message,
     })
   end
 

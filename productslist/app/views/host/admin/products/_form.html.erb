@@ -80,7 +80,6 @@
     }
 
     var strings = {
-      removed_successfully: '<%= t('common.removed_successfully') %>',
       blank_name: '<%= t('product.errors.blank_name') %>',
       error: '<%= t('common.error') %>'
     }
@@ -110,7 +109,7 @@
         data: {context_id: id},
         type: 'delete',
         success: function(response){
-          alert(strings.removed_successfully)
+          alert(response.message)
         },
         error: function(){
           alert(strings.error)
@@ -124,7 +123,7 @@
           url;
       if(name == '' || name == 'undefined'){
         alert(strings.blank_name);
-        return;
+        return false;
       }
       if (row.hasClass('tag')){
         url = urls.add_tag;

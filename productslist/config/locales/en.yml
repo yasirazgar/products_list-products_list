@@ -31,8 +31,6 @@ en:
       'Add'
     already_exists:
       'Already exists'
-    removed_successfully:
-      'Removed successfully'
     error:
       'Error'
   product:
@@ -58,6 +56,10 @@ en:
       'Category added successfully'
     tag_added:
       'Tag added successfully'
+    category_removed:
+      'Category removed successfully'
+    tag_removed:
+      'Tag removed successfully'
     errors:
       blank_name:
         'Name cannot be blank'
