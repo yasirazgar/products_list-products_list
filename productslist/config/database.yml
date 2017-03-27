@@ -18,8 +18,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: product_list_test
+  database: products_list_test
 
 production:
   <<: *default
-  database: product_list_production
+  database: products_list_production
