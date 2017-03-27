@@ -2,7 +2,6 @@ require_relative '../../../test_helper.rb'
 
 class Api::V1::ProductsControllerTest < ActionController::TestCase
   setup do
-    ActionController::Base.allow_forgery_protection = true
     @product = products(:one)
   end
 
