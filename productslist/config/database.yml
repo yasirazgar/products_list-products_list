@@ -7,12 +7,9 @@
 default: &default
   adapter: postgresql
   host: localhost
-  # username: user # heroku config
   pool: 5
   timeout: 5000
-  # username: root
-  # password:
-  # socket: /tmp/mysql.sock
+  # username: user # heroku config
 
 development:
   <<: *default

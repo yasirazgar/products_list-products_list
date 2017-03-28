@@ -119,7 +119,8 @@
 
     $(document).on('click', '.add', function(event){
       var row = $(this).parents('.add_new'),
-          name = row.find('input').val(),
+          input = row.find('input')
+          name = input.val(),
           url;
       if(name == '' || name == 'undefined'){
         alert(strings.blank_name);
@@ -133,6 +134,7 @@
       }
 
       submitAddRow(url, name, $(this));
+      input.val('');
       return false;
     })
 
