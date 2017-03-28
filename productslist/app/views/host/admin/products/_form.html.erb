@@ -119,7 +119,7 @@
 
     $(document).on('click', '.add', function(event){
       var row = $(this).parents('.add_new'),
-          input = row.find('input')
+          input = row.find('input'),
           name = input.val(),
           url;
       if(name == '' || name == 'undefined'){
