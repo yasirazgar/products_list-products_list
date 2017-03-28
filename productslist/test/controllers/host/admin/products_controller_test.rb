@@ -35,7 +35,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     cat = tags(:one)
     xhr(:post, :add_tag, :id => @product, :name => cat.name)
     assert_response(:unprocessable_entity)
-    assert_equal(I18n.t('common.already_exists'), @response.body,
+    assert_equal(I18n.t('product.tag_already_exists'), @response.body,
       "Should back html response")
   end
 
@@ -53,7 +53,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     xhr(:post, :add_category, :id => @product, :name => cat.name)
     assert_response(:unprocessable_entity)
 
-    assert_equal(I18n.t('common.already_exists'),  @response.body,
+    assert_equal(I18n.t('product.category_already_exists'),  @response.body,
       "Should back html response")
   end
 

@@ -56,6 +56,10 @@ en:
       'Category added successfully'
     tag_added:
       'Tag added successfully'
+    tag_already_exists:
+      'Tag already exists'
+    category_already_exists:
+      'Category already exists'
     category_removed:
       'Category removed successfully'
     tag_removed:

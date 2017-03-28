@@ -111,7 +111,7 @@
         success: function(response){
           alert(response.message)
         },
-        error: function(){
+        error: function(response){
           alert(strings.error)
         },
       })
@@ -143,10 +143,12 @@
         type: 'post',
         success: function(response){
           button.parents('.field').find('.rows').append(response.html);
-          alert(response.message)
+          setTimeout(function(){
+            alert(response.message)
+          },100); // setting a 100ms delay to make sure alert is shown after the row is added
         },
-        error: function(){
-          alert(strings.error)
+        error: function(xhr){
+          alert(xhr.responseText)
         },
       })
     }

@@ -29,7 +29,7 @@ class Host::Admin::ProductsController < ApplicationController
 
       render_add_success_json(t('product.category_added'), category, 'category')
     else
-      render_add_error_json
+      render_add_error_json(t('product.category_already_exists'))
     end
   end
 
@@ -42,7 +42,7 @@ class Host::Admin::ProductsController < ApplicationController
 
       render_add_success_json(t('product.tag_added'), tag, 'tag')
     else
-      render_add_error_json
+      render_add_error_json(t('product.tag_already_exists'))
     end
   end
 
@@ -70,8 +70,8 @@ class Host::Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def render_add_error_json
-    render(:text => t('common.already_exists'),
+  def render_add_error_json(message)
+    render(:text => message,
            :status => :unprocessable_entity,
     )
   end
