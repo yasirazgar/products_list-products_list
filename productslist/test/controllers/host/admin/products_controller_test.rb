@@ -37,7 +37,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     cat = tags(:one)
     xhr(:post, :add_tag, :id => @product, :name => cat.name)
     assert_response(:unprocessable_entity)
-    assert_equal(I18n.t('product.tag_already_exists'), @response.body,
+    assert_equal(I18n.t('product.tag.already_exists'), @response.body,
       "Should back html response")
   end
 
@@ -57,7 +57,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     xhr(:post, :add_category, :id => @product, :name => cat.name)
     assert_response(:unprocessable_entity)
 
-    assert_equal(I18n.t('product.category_already_exists'),  @response.body,
+    assert_equal(I18n.t('product.category.already_exists'),  @response.body,
       "Should back html response")
   end
 
@@ -66,7 +66,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_equal(tag, @product.tags.first)
     xhr(:delete, :remove_tag, :id => @product, :context_id => tag.id)
     assert_response(:success)
-    assert_equal(I18n.t('product.tag_removed'), JSON.parse(@response.body)['message'],
+    assert_equal(I18n.t('product.tag.remove_success'), JSON.parse(@response.body)['message'],
       "Should send back message")
     assert_equal(true, @product.tags.blank?)
   end
@@ -76,7 +76,7 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_equal(category, @product.categories.first)
     xhr(:delete, :remove_category, :id => @product, :context_id => category.id)
     assert_response(:success)
-    assert_equal(I18n.t('product.category_removed'), JSON.parse(@response.body)['message'])
+    assert_equal(I18n.t('product.category.remove_success'), JSON.parse(@response.body)['message'])
     assert_equal(true, @product.categories.blank?)
   end
 

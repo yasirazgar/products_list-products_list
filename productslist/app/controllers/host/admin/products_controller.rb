@@ -29,7 +29,7 @@ class Host::Admin::ProductsController < ApplicationController
 
       render_add_success_json(category, 'category')
     else
-      render_add_error_json(t('product.category_already_exists'))
+      render_add_error_json(t('product.category.already_exists'))
     end
   end
 
@@ -42,7 +42,7 @@ class Host::Admin::ProductsController < ApplicationController
 
       render_add_success_json(tag, 'tag')
     else
-      render_add_error_json(t('product.tag_already_exists'))
+      render_add_error_json(t('product.tag.already_exists'))
     end
   end
 
@@ -52,7 +52,7 @@ class Host::Admin::ProductsController < ApplicationController
 
     @product.categories.where(:id => category_id).first.destroy
 
-    render_remove_success_json(t('product.category_removed'))
+    render_remove_success_json(t('product.category.remove_success'))
   end
 
   # only xhr
@@ -61,7 +61,7 @@ class Host::Admin::ProductsController < ApplicationController
 
     @product.tags.where(:id => tag_id).first.destroy
 
-    render_remove_success_json(t('product.tag_removed'))
+    render_remove_success_json(t('product.tag.remove_success'))
   end
 
   private
