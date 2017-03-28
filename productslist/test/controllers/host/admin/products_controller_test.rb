@@ -28,6 +28,8 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_response(:success)
     assert_equal(true, JSON.parse(@response.body)['html'].present?,
       "Should send back html response")
+    assert_equal(I18n.t('product.tag.add_success'), JSON.parse(@response.body)['message'],
+      "Should send back html response")
     assert_equal(name, @product.tags.last.name)
   end
 
@@ -45,6 +47,8 @@ class Host::Admin::ProductsControllerTest < ActionController::TestCase
     assert_response(:success)
     assert_equal(true, JSON.parse(@response.body)['html'].present?,
       "Should back html response")
+    assert_equal(I18n.t('product.category.add_success'), JSON.parse(@response.body)['message'],
+      "Should send back html response")
     assert_equal(name, @product.categories.last.name)
   end
 

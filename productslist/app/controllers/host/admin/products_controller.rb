@@ -27,7 +27,7 @@ class Host::Admin::ProductsController < ApplicationController
     if !@product.categories.include?(category)
       @product.categories << category
 
-      render_add_success_json(t('product.category_added'), category, 'category')
+      render_add_success_json(category, 'category')
     else
       render_add_error_json(t('product.category_already_exists'))
     end
@@ -40,7 +40,7 @@ class Host::Admin::ProductsController < ApplicationController
     if !@product.tags.include?(tag)
       @product.tags << tag
 
-      render_add_success_json(t('product.tag_added'), tag, 'tag')
+      render_add_success_json(tag, 'tag')
     else
       render_add_error_json(t('product.tag_already_exists'))
     end
@@ -82,9 +82,9 @@ class Host::Admin::ProductsController < ApplicationController
     })
   end
 
-  def render_add_success_json(message, context, type)
+  def render_add_success_json(context, type)
     render(:json => {
-      :message => message,
+      :message => t("product.#{type}.add_success"),
       :html => render_to_string(:partial => 'host/admin/products/row',
                                 :locals => {:name => context.send(:name), :id => context.send(:id), :type => type})
       })

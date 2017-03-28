@@ -29,8 +29,6 @@ en:
       'Remove'
     add:
       'Add'
-    already_exists:
-      'Already exists'
     error:
       'Error'
   product:
@@ -52,18 +50,20 @@ en:
       'Description'
     admin_approved:
       'Approved by admin'
-    category_added:
-      'Category added successfully'
-    tag_added:
-      'Tag added successfully'
-    tag_already_exists:
-      'Tag already exists'
-    category_already_exists:
-      'Category already exists'
-    category_removed:
-      'Category removed successfully'
-    tag_removed:
-      'Tag removed successfully'
+    category: # used dynamically, maitain common key for category and tag
+      add_success:
+        'Category added successfully'
+      already_exists:
+        'Category already exists'
+      remove_success:
+        'Category reoved successfully'
+    tag: # used dynamically, maitain common key for category and tag
+      add_success:
+        'Tag added successfully'
+      already_exists:
+        'Tag already exists'
+      remove_success:
+        'Tag removed successfully'
     errors:
       blank_name:
         'Name cannot be blank'
