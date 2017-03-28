@@ -25,6 +25,13 @@ class Product < ActiveRecord::Base
                           :join_table => :products_categories
   has_and_belongs_to_many :tags,
                           :join_table => :products_tags
+
+  scope :with_tag, -> (tag_name) {
+    where('tags.name = ?', tag_name).joins(:tags)}
+
+  scope :with_category, -> (category_name) {
+    where('categories.name = ?', category_name).joins(:categories)}
+
   def images
     Array(super)
   end

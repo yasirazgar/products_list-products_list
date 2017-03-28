@@ -12,4 +12,21 @@ class ProductTest < ActiveSupport::TestCase
           ]).first_image_url,
       "Should return first images url")
   end
+
+  test "scope with tag" do
+    # products(:tag_one), name = tag1
+    assert_equal([products(:one)],
+      Product.with_tag('tag1'),
+      "Should return prodcuts with given tag name")
+  end
+
+  test "scope with category" do
+    # products(:category_one), name = category1
+    assert_equal([products(:one)],
+      Product.with_category('category1'),
+      "Should return prodcuts with given category name")
+  end
+
+
+
 end
